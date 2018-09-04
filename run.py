@@ -43,11 +43,11 @@ else:
 
 myDic= {}
 
-desiredNameList = ["km", "motor_gucu", "motor_hacmi", "renk"]
+desiredNameList = ["km", "motor_gucu", "motor_hacmi", "renk","hasar_durumu"]
 dmpDataLen = len(obj["dmpData"])
 for i in range(dmpDataLen):
     for name in desiredNameList:
         if obj["dmpData"][i]["name"] == name:
             myDic[name] = obj["dmpData"][i]["value"]
-            
+
 print(myDic)
