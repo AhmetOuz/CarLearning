@@ -5,10 +5,12 @@ import json
 
 print(sys.version)
 
-saveFileFlag = 1
+# url = "https://www.sahibinden.com/ilan/vasita-otomobil-bmw-sahibinden-temiz-bmw-6.40-d-xdrive-m-sport-hatasiz-535023824/detay"
+url = "https://www.sahibinden.com/ilan/vasita-otomobil-bmw-imola-kirmizisi-96250-tl-594631668/detay"
+
+saveFileFlag = 0
 header = {"User-Agent": "My User-Agent 1.0", "From": "youremail@domain.com"}
-r = requests.get(
-    'https://www.sahibinden.com/ilan/vasita-otomobil-bmw-auto-reza-2012-bmw-640d-grand-coupe-distronic-head-up-masaj-600139580/detay', headers=header)
+r = requests.get(url, headers=header) 
 content = r.text
 
 
@@ -33,9 +35,19 @@ if foundJsonCount > 0:
     print(str(foundJsonCount) + " Json pattern(s) found.\n")
     for item in jsonStringList:
         obj = json.loads(item)
-        print (obj)
-        print ("=="*64)
-        print (item)
+        # print (obj)
+        # print ("=="*64)
+        # print (item)
 else:
     print("No Json pattern found.")
 
+myDic= {}
+
+desiredNameList = ["km", "motor_gucu", "motor_hacmi", "renk"]
+dmpDataLen = len(obj["dmpData"])
+for i in range(dmpDataLen):
+    for name in desiredNameList:
+        if obj["dmpData"][i]["name"] == name:
+            myDic[name] = obj["dmpData"][i]["value"]
+            
+print(myDic)
