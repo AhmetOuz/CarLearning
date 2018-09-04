@@ -11,7 +11,7 @@ r = requests.get(
     'https://www.sahibinden.com/ilan/vasita-otomobil-bmw-auto-reza-2012-bmw-640d-grand-coupe-distronic-head-up-masaj-600139580/detay', headers=header)
 content = r.text
 
-print(content)
+
 
 if saveFileFlag == 1:
     try:
@@ -28,12 +28,14 @@ regex_sequence = re.compile(
 for match in regex_sequence.finditer(content):
     jsonStringList.append(match.group(1)),
 
-# foundJsonCount = len(jsonStringList)
-# if foundJsonCount > 0:
-#     print(str(foundJsonCount) + " Json pattern(s) found.\n")
-#     for item in jsonStringList:
-#         print(item)
-# else:
-#     print("No Json pattern found.")
+foundJsonCount = len(jsonStringList)
+if foundJsonCount > 0:
+    print(str(foundJsonCount) + " Json pattern(s) found.\n")
+    for item in jsonStringList:
+        obj = json.loads(item)
+        print (obj)
+        print ("=="*64)
+        print (item)
+else:
+    print("No Json pattern found.")
 
-# obj = json.loads(jsonStringList)
