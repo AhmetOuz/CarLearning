@@ -5,7 +5,6 @@ import json
 
 print(sys.version)
 
-# url = "https://www.sahibinden.com/ilan/vasita-otomobil-bmw-sahibinden-temiz-bmw-6.40-d-xdrive-m-sport-hatasiz-535023824/detay"
 url = "https://www.sahibinden.com/ilan/vasita-otomobil-bmw-imola-kirmizisi-96250-tl-594631668/detay"
 
 saveFileFlag = 0
