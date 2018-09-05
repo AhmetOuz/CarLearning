@@ -5,7 +5,7 @@ import json
 
 print(sys.version)
 
-url = "https://www.sahibinden.com/ilan/vasita-otomobil-bmw-imola-kirmizisi-96250-tl-594631668/detay"
+url = "https://www.sahibinden.com/ilan/vasita-otomobil-bmw-axu-motors-florya-borusan-118-i-m-paket-ici-kirmizi-hafizali-584312503/detay"
 
 saveFileFlag = 0
 header = {"User-Agent": "My User-Agent 1.0", "From": "youremail@domain.com"}
@@ -25,10 +25,10 @@ if saveFileFlag == 1:
 
 jsonStringList = []
 regex_sequence = re.compile(
-    r"<script\W+id\W*=\W*\"gaPageViewTrackingData\"\W+type\W*=\W*\"text/javascript\">\n*\W*var.*=(.*);", re.MULTILINE)
+    r"<script\W+id\W*=\W*\"gaPageViewTrackingData\"\W+type\W*=\W*\"text/javascript\">\n*\W*var.*\W+=\W(.*);", re.MULTILINE)
 for match in regex_sequence.finditer(content):
-    jsonStringList.append(match.group(1)),
-
+    jsonStringList.append(match.group(1))
+    
 foundJsonCount = len(jsonStringList)
 if foundJsonCount > 0:
     print(str(foundJsonCount) + " Json pattern(s) found.\n")
